@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, {useState } from 'react';
 import './App.css';
 
 function App() {
+
+  const [input,setInput] = useState({
+    product:"",
+    price:"",
+    count:"",
+  })
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <input type="text" onChange={(e)=> setInput({...input, product: e.target.value})} value ={input.product} placeholder='product' />
+      
+      <input type="text" onChange={(e)=> setInput({...input, price: e.target.value})} value ={input.price} placeholder='ptice' />
+      
+      <input type="text" onChange={(e)=> setInput({...input, count: e.target.value})} value ={input.count} placeholder='count' />
+      
+      <button onClick={()=> console.log(input)}>Добавить товар</button>
+
     </div>
   );
 }
